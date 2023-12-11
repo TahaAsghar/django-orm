@@ -1,5 +1,5 @@
 """
-WSGI config for orm_learning project.
+WSGI config for orm_learningsss project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
