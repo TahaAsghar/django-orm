@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Restaurant(models.Model):
@@ -25,14 +26,16 @@ class Restaurant(models.Model):
 
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField()
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='ratings')
+    rating = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
 
     def __str__(self):
         return f"Rating: {self.rating}"
 
 
 class Sale(models.Model):
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL, null=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.SET_NULL, null=True,related_name='sales')
     income = models.DecimalField(max_digits=9, decimal_places=2)
     datetime = models.DateTimeField()
