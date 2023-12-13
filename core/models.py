@@ -5,8 +5,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Restaurant(models.Model):
     class TypeChoices(models.TextChoices):
+        FASTFOOD = 'FF', 'FastFood'
+        INDIAN = 'IN', 'Indian'
         PAKISTANI = 'PK', 'Pakistani'
-        INDIA = 'IN', 'Indian'
         ITALIAN = 'IT', 'Italian'
         CHINESE = 'CH', 'Chinese'
         GREEK = 'GR', 'Greek'
