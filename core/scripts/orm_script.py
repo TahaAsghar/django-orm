@@ -14,8 +14,8 @@ def run():
     )
 
     """ get restaurant ratings """
-    # restaurant = Restaurant.objects.first()
-    # print(restaurant.ratings.all())
+    restaurant = Restaurant.objects.first()
+    print(restaurant.ratings.all())
 
     """ create a restaurant """
     # restaurant = Restaurant.objects.first()
